@@ -1,10 +1,26 @@
-<h1>Pages#home</h1>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div>
+    <% if user_signed_in? %>
+      <%= current_user.email %>
+      <%= link_to "Edit profile", edit_user_registration_path %>
+      <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
+    <% else %>
+      <%= link_to "Log in", user_session_path %>
+      <%= link_to "Sign up", new_user_registration_path %>
+    <% end %>
+  </div>
 
-<% if user_signed_in? %>
-  <%= current_user.email %>
-  <%= link_to "Edit profile", edit_user_registration_path %>
-  <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-<% else %>
-  <%= link_to "Log in", user_session_path %>
-  <%= link_to "Sign up", new_user_registration_path %>
-<% end %>
+  <div class="container text-center">
+    <h1>Tabinav</h1>
+    <h2>the <strong>easiest</strong> way to get <strong>inspired</strong>!</h2>
+    <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
+      <div class="search-form-control form-group">
+        <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+
+        <button name="button" type="submit" class="btn btn-flat text-white">
+          <i class="fas fa-search text-white"></i> Search
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
