@@ -1,5 +1,4 @@
 Airbnb clone created and mantained by
-- @eirenechan
-- @ronnieh7
-- @Jeroen000
-- @mikececco
+<a href="https://github.com/mikececco/airbnb-tabinav/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mikececco/airbnb-tabinav" />
+</a>
