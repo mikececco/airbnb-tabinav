@@ -14,5 +14,9 @@ class FlatsController < ApplicationController
     @flat = Flat.new
   end
 
+  def create
+    @flat = Flat.new
+  end
+
   # create: will receive the form data submitted through the new action and create a new flat in the database
 end
