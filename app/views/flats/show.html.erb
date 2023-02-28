@@ -9,5 +9,6 @@
 <div class="m-5">
   <p>Price per night: €<%= @flat.price %></p>
   <p>Flat Owner:<%= @flat.user.first_name %></p>
-  <%= cl_image_tag @flat.photo.key, height: 300, width: 400, crop: :fill %>
 </div>
+
+<%= link_to "Book", new_flat_booking_path(@flat), class: "btn btn-primary" %>
