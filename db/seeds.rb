@@ -20,8 +20,7 @@ puts "---\n"
 puts "Creating 10 flats..."
 
 10.times do
-  address = "#{Faker::Address.street_address}, #{Faker::Address.city}, #{Faker::Address.country}"
-  Flat.create(address: address, price: rand(59..109))
+  Flat.create(address: Faker::Address.street_address, city: Faker::Address.city, country: Faker::Address.country, price: rand(59..109))
 end
 
 puts "10 flats created!"
