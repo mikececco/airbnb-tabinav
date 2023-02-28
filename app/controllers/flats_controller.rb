@@ -1,7 +1,7 @@
 class FlatsController < ApplicationController
   # index: will display a list of all the available flats
   def index
-    @flats = Flats.all
+    @flats = Flat.all
   end
 
   # show: will display the details of a specific flat, such as the price and location
