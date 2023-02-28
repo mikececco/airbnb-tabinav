@@ -1,2 +1,10 @@
 <h1>Flats#new</h1>
 <p>Find me in app/views/flats/new.html.erb</p>
+
+<%= simple_form_for(@flat) do |f| %>
+  <%= f.input :price %>
+  <%= f.input :address %>
+  <%= f.input :city %>
+  <%= f.input :flat_location %>
+  <%= f.submit %>
+<% end %>
