@@ -27,7 +27,7 @@ class FlatsController < ApplicationController
   private
 
   def flat_params
-    params.require(:flat).permit(:price, :address, :city, :flat_location)
+    params.require(:flat).permit(:price, :address, :city, :flat_location, :photo)
   end
 
   # create: will receive the form data submitted through the new action and create a new flat in the database
