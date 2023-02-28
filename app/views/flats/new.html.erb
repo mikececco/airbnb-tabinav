@@ -4,5 +4,6 @@
   <%= f.input :address, hint: "Streetname and postcode" %>
   <%= f.input :city, collection: Flat::CITIES, as: :radio_buttons %>
   <%= f.input :flat_location, collection: Flat::COUNTRIES, as: :radio_buttons %>
+  <%= f.input :photo, as: :file %>
   <%= f.submit class:"btn btn-primary rounded-5" %>
 <% end %>
