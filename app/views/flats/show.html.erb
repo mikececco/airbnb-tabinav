@@ -1,2 +1,12 @@
-<h1>Flats#show</h1>
-<p>Find me in app/views/flats/show.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+  <div class="banner-container">
+    <h1>Flat in <%= @flat.city %>, <%= @flat.flat_location %></h1>
+    <p>Description place holder</p>
+    <a class="btn btn-flat" href="#">Book now</a>
+  </div>
+</div>
+
+<div class="m-5">
+  <p>Price per night: €<%= @flat.price %></p>
+  <p>Flat Owner:<%= @flat.user.first_name %></p>
+</div>
