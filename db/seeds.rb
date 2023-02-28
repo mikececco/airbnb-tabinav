@@ -8,8 +8,10 @@
 require "open-uri"
 
 puts "Clearing database..."
-User.destroy_all
+Booking.destroy_all
 Flat.destroy_all
+User.destroy_all
+
 
 User.create!(email: "jeroen@tabinav.com", password: "111111", first_name: "Jeroen", last_name: "Hesp", phone_number: "123456789")
 User.create!(email: "mike@tabinav.com", password: "111111", first_name: "Mike", last_name: "Cecconello", phone_number: "123456789")
@@ -19,12 +21,12 @@ admin = User.create!(email: "admin@tabinav.com", password: "111111", first_name:
 
 puts "Accounts for Jeroen, Mike, Ronnie, Eirene were created! \nEmail: jeroen@tabinav.com | mike@tabinav.com | ronnie@tabinav.com | eirene@tabinav.com \nPassword: 111111"
 puts "---\n"
-puts "Creating 10 flats..."
+puts "Creating 50 flats..."
 
-10.times do
+50.times do
   address = Faker::Address.street_address
-  city = Faker::Address.city
-  country = Faker::Address.country
+  city = ["Amsterdam", "Rotterdam", "Utrecht", "The Hague"].sample
+  country = "NL"
   file = URI.open("https://source.unsplash.com/random/600x400/?#{city}")
   price = rand(39..109)
   flat = Flat.new(address: address, city: city, flat_location: country, price: price, user: admin)
@@ -39,4 +41,4 @@ puts "Creating 10 flats..."
   booking.save!
 end
 
-puts "10 flats created with 1 booking for each flat!"
+puts "50 flats created with 1 booking for each flat!"
