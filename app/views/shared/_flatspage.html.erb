@@ -1,28 +1,17 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Flats Page</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%# <%= stylesheet_link_tag 'flatspage' %>
-    <%# <%= javascript_include_tag 'flatspage' %>
-  </head>
-  <body>
-    <header>
-      <h1>Flats Page</h1>
-    </header>
-    <main>
-      <div class="flats-container">
-          <div class="flat">
-            <img src="https://picsum.photos/200">
-            <h2> title </h2>
-            <p> description </p>
-            <p> price</p>
-          </div>
-      </div>
-    </main>
-    <footer>
-      <p>&copy; 2023 Tabinav</p>
-    </footer>
-  </body>
-</html>
+<div class="flats-container">
+  <% @flats.each do |flat| %>
+  <a href="<%= flat_path(flat) %>" class="flat">
+      <% if flat.photo.key  %>
+      <img src="<%= cl_image_path(flat.photo.key)%>">
+    <% end %>
+      <h2><%= flat.city %></h2>
+      <p><%= flat.user.first_name %></p>
+      <p> €<%= flat.price.to_i %></p>
+    </a>
+  <% end %>
+</div>
+
+
+  <%# <% if flat.photo.key  %>
+      <%# <%= cl_image_tag flat.photo.key, height: 300, width: 400, crop: :fill %>
+    <%# <% end %>
