@@ -34,8 +34,7 @@ puts "Creating 10 flats..."
   start_date = Date.today
   duration = rand(3..7)
   end_date = start_date + duration
-  total_price = price * (duration - 1)
-  booking = Booking.new(start_date: start_date, end_date: end_date, price: total_price, user: eirene)
+  booking = Booking.new(start_date: start_date, end_date: end_date, user: eirene)
   booking.flat = flat
   booking.save!
 end
