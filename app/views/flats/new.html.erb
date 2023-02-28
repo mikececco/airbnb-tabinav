@@ -1,10 +1,7 @@
-<h1>Flats#new</h1>
-<p>Find me in app/views/flats/new.html.erb</p>
-
 <%= simple_form_for(@flat) do |f| %>
-  <%= f.input :price %>
-  <%= f.input :address %>
-  <%= f.input :city %>
-  <%= f.input :flat_location %>
+  <%= f.input :price, collection: 1..100 %>
+  <%= f.input :address, hint: "Streetname and postcode" %>
+  <%= f.input :city, collection: Flat::CITIES, as: :radio_buttons %>
+  <%= f.input :flat_location, collection: Flat::COUNTRIES, as: :radio_buttons %>
   <%= f.submit %>
 <% end %>
