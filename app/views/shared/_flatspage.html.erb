@@ -4,7 +4,7 @@
     <title>Flats Page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <%# <%= stylesheet_link_tag 'flatspage' %>
+    <%= stylesheet_link_tag 'flatspage' %>
     <%# <%= javascript_include_tag 'flatspage' %>
   </head>
   <body>
@@ -13,12 +13,14 @@
     </header>
     <main>
       <div class="flats-container">
+        <% @flats.each do |flat| %>
           <div class="flat">
-            <img src="https://picsum.photos/200">
-            <h2> title </h2>
-            <p> description </p>
-            <p> price</p>
+            <img src="<%= flat.image_url %>">
+            <h2><%= flat.#{city}#{country} %></h2>
+            <p><%= flat.adress %></p>
+            <p><%= flat.price %></p>
           </div>
+        <% end %>
       </div>
     </main>
     <footer>
