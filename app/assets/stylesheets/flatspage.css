@@ -84,5 +84,5 @@ footer p {
 @media screen and (max-width: 767px) {
   .flats-container {
     grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
-  }
+  } 
 }
