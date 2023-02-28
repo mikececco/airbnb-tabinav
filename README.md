@@ -1,1 +1,5 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Airbnb clone created and mantained by
+
+<a href="https://github.com/mikececco/airbnb-tabinav/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=mikececco/airbnb-tabinav" />
+</a>
