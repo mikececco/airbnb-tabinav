@@ -22,6 +22,8 @@ module AirbnbTabinav
     # in config/environments, which are processed later.
     #
     # config.time_zone = "Central Time (US & Canada)"
+    config.time_zone = "UTC +01:00"
+    config.active_record.default_timezone = :local
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
