@@ -1,0 +1,6 @@
+<%= simple_form_for [@flat, @booking], :html=> { class: 'form-group p-5' } do |f| %>
+  <h1 class="text-black">Your booking for <%=@flat.address%>, <%=@flat.flat_location%> </h1>
+  <%= f.input :start_date %>
+  <%= f.input :end_date %>
+  <%= f.submit class:"btn btn-primary rounded-5" %>
+<% end %>
