@@ -15,7 +15,19 @@ class FlatsController < ApplicationController
   end
 
   def create
-    @flat = Flat.new
+    @flat = Flat.new(flat_params)
+    @flat.user = current_user
+    if @flat.save
+      redirect_to flat_path(@flat)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def flat_params
+    params.require(:flat).permit(:price, :address, :city, :flat_location)
   end
 
   # create: will receive the form data submitted through the new action and create a new flat in the database
