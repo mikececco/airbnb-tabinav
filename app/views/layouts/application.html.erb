@@ -13,8 +13,8 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
+    <%= render "shared/navbar" unless ["devise/sessions", "devise/registrations"].include? params[:controller] %>
     <%= yield %>
-    <%= render "shared/footer" %>
+    <%= render "shared/footer" unless ["devise/sessions", "devise/registrations"].include? params[:controller] %>
   </body>
 </html>
