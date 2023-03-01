@@ -9,6 +9,13 @@ class FlatsController < ApplicationController
     else
       @flats = Flat.where("lower(city) LIKE ? OR lower(flat_location) LIKE ?", @query.downcase + "%", @query.downcase + "%")
     end
+
+    @markers = @flats.geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude
+      }
+    end
   end
 
   # show: will display the details of a specific flat, such as the price and location

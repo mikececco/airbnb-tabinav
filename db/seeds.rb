@@ -21,24 +21,51 @@ admin = User.create!(email: "admin@tabinav.com", password: "111111", first_name:
 
 puts "Accounts for Jeroen, Mike, Ronnie, Eirene were created! \nEmail: jeroen@tabinav.com | mike@tabinav.com | ronnie@tabinav.com | eirene@tabinav.com \nPassword: 111111"
 puts "---\n"
-puts "Creating 50 flats..."
+puts "Creating 30 flats in NL..."
 
-50.times do
-  address = Faker::Address.street_address
-  city = ["Amsterdam", "Rotterdam", "Utrecht", "The Hague"].sample
-  country = "NL"
-  file = URI.open("https://source.unsplash.com/random/600x400/?#{city}")
-  price = rand(39..109)
-  flat = Flat.new(address: address, city: city, flat_location: country, price: price, user: admin)
-  flat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-  flat.save!
+nl_addresses = {
+  "Amsterdam" => ["537 Pinasstraat", "572 Kloekhorststraat", "IJsbaanpad 9", "18, Erik de Roodestraat", "5C, Vincent van Gogh Street", "4, Koningin Wilhelminaplein", "371, Prinseneiland", "23, Pennyhof", "29, M.C. Addicksstraat", "207, Van der Palmkade"],
+  "Rotterdam" => ["12, Keilezijweg", "131, Bunschotenweg", "60A, Westerbeekstraat", "39, Charlie Shaverslaan", "31, Jean Sibeliusstraat", "6, Mesdaglaan", "48A, Burgemeester Hoffmanplein", "Galvanaistraat", "364, Plaszoom", "125, Tinbergenlaan"],
+  "Utrecht" => ["Mozartlaan 29", "Nieuwegracht", "Maliesingel 9-6", "Lamérislaan 33-55", "R.A. Kartinistraat"],
+  "The Hague" => ["Roggekamp 90", "Dwingelostraat", "Heliotrooplaan 38", "Haviklaan 20", "Walenburg 6"]
+}
 
-  start_date = Date.today
-  duration = rand(3..7)
-  end_date = start_date + duration
-  booking = Booking.new(start_date: start_date, end_date: end_date, user: eirene)
-  booking.flat = flat
-  booking.save!
+nl_addresses.each do |city, array|
+  array.each do |street|
+    file = URI.open("https://source.unsplash.com/random/600x400/?#{city}")
+    price = rand(39..109)
+    description = "Bumble Barn has a large sitting, dining and kitchen area, opening onto the patio with views of the horse paddocks, open field and trees.
+    Sitting Room has a smart 4K TV.
+    Fully equipped kitchen with large fridge/freezer.
+    Main bedroom with king sized double bed and en suite shower room. Optional colour changing LED lighting.
+    2 twin bedrooms. Main bathroom with bath/shower"
+    flat = Flat.new(address: street, city: city, flat_location: "NL", price: price, user: admin, description: description)
+    flat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+    flat.save!
+
+    start_date = Date.today
+    duration = rand(3..7)
+    end_date = start_date + duration
+    booking = Booking.new(start_date: start_date, end_date: end_date, user: eirene)
+    booking.flat = flat
+    booking.save!
+  end
 end
 
-puts "50 flats created with 1 booking for each flat!"
+puts "30 flats in NL created with 1 booking for each flat!"
+# puts "---\n"
+# puts "Creating 10 flats around the world..."
+
+# 10.times do
+#   address = Faker::Address
+#   street = address.full_address
+#   city = address.city
+#   country = address.country
+#   # file = URI.open("https://source.unsplash.com/random/600x400/?#{city}")
+#   price = rand(39..109)
+#   flat = Flat.new(address: street, city: city, flat_location: country, price: price, user: admin)
+#   # flat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+#   flat.save!
+# end
+
+# puts "10 flats created!"
