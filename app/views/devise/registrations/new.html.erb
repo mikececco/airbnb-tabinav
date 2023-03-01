@@ -1,38 +1,46 @@
-  <div class="container mx-auto" style="width: 40%;">
-    <div class="p-5">
-      <h2>Sign up</h2>
+<div class="d-flex flex-row">
 
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-        <%= f.error_notification %>
-
-        <div class="form-inputs">
-          <%= f.input :first_name,
-                      required: true,
-                      autofocus: true %>
-          <%= f.input :last_name,
-                      required: true,
-                      autofocus: true %>
-          <%= f.input :phone_number,
-                      required: true,
-                      autofocus: true %>
-          <%= f.input :email,
-                      required: true,
-                      autofocus: true,
-                      input_html: { autocomplete: "email" }%>
-          <%= f.input :password,
-                      required: true,
-                      hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password" } %>
-          <%= f.input :password_confirmation,
-                      required: true,
-                      # hint: ("Passwords should match" if ABOVE_PASSWORD != INPUTTING VALUE),
-                      input_html: { autocomplete: "new-password" }, :label => "Confirm password" %>
-        </div>
-        <div class="form-actions">
-          <%= f.button :submit, "Sign up", class: "btn btn-primary rounded-5" %>
-        </div>
-      <% end %>
-
-      <%= render "devise/shared/links" %>
+    <div style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png); height: 100vh; width: 40%">
+      <%= image_tag('airbnb.png', :class => "w-50 p-5") %>
     </div>
-  </div>
+
+    <div class="container mx-auto column p-5" style="width: 60%;">
+      <div class="p-5">
+        <h2>Sign up</h2>
+
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :first_name,
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :last_name,
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :phone_number,
+                        required: true,
+                        autofocus: true %>
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        # hint: ("Passwords should match" if ABOVE_PASSWORD != INPUTTING VALUE),
+                        input_html: { autocomplete: "new-password" }, :label => "Confirm password" %>
+          </div>
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: "btn btn-primary rounded-5" %>
+          </div>
+        <% end %>
+
+        <%= render "devise/shared/links" %>
+      </div>
+    </div>
+
+</div>
