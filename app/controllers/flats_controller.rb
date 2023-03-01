@@ -1,7 +1,14 @@
 class FlatsController < ApplicationController
+  skip_before_action :authenticate_user!, only: :index
+
   # index: will display a list of all the available flats
   def index
-    @flats = Flat.all
+    @query = params[:search].nil? ? "" : params[:search]
+    if @query == ""
+      @flats = Flat.all
+    else
+      @flats = Flat.where("lower(city) LIKE ? OR lower(flat_location) LIKE ?", @query.downcase + "%", @query.downcase + "%")
+    end
   end
 
   # show: will display the details of a specific flat, such as the price and location
