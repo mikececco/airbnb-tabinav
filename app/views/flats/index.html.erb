@@ -16,8 +16,11 @@
     class="me-5 rounded-4"
     data-controller="map"
     data-map-markers-value="<%= @markers.to_json %>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
 
-  <%= render "shared/flatspage", flats: @flats  %>
-
+  <div class="text-center">
+    <%= render "shared/flatspage", flats: @flats  %>
+    <%= link_to "Add Listing", new_flat_path, class: "btn btn-primary" %>
+  </div>
 </div>
