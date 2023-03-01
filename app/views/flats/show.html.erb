@@ -1,23 +1,22 @@
 <div class="page-container">
-  <div
-    class="banner"
-    style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')"
-  >
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')">
     <div class="banner-container">
       <h1>Flat in
         <%= @flat.city %>,
         <%= @flat.flat_location %></h1>
-      <p>Description place holder</p>
-      <%= render "bookings/new", flat: @flat, booking: Booking.new %>
+      <p><%= @flat.address %></p>
     </div>
   </div>
 
-<div class="booking-info m-5">
-  <h2>Apartment Information</h2>
-  <div class="apartment-info">
-    <p>Price per night: €<%= @flat.price %></p>
-    <p>Flat Owner: <%= @flat.user.first_name %></p>
+  <div class="booking-info m-5">
+    <h2>Apartment Information</h2>
+    <div class="apartment-info">
+      <p>Price per night: €<%= @flat.price %></p>
+      <p>Flat Owner: <%= @flat.user.first_name %></p>
+      <p>Description: <%= @flat.description %></p>
+    </div>
   </div>
-</div>
+
+  <%= render "shared/new", flat: @flat, booking: Booking.new %>
 
 <%# <%= link_to "Book", new_flat_booking_path(@flat), class: "btn btn-primary" %>
