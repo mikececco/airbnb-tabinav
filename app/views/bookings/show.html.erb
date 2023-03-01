@@ -1,0 +1,14 @@
+<div class="m-5 p-4 text-center bg-dark rounded-4">
+  <h1>Booking confirmed!</h1>
+
+  <h3>Your stay in <%= @flat.address %>, <%= @flat.city %>, <%= @flat.flat_location %></h3>
+  <h3>From <strong><%= @booking.start_date %></strong> to <strong><%= @booking.end_date %></strong></h3>
+
+  <p style="color: white;">Price per night: €<%= @flat.price %></p>
+</div>
+
+<div class="text-center mb-5">
+  <h1><%= link_to root_path, class: "btn btn-primary btn-flat rounded-5" do %>
+    <i class="fas fa-search text-white"></i> Search again
+  <% end %></h1>
+</div>
