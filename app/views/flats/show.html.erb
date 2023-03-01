@@ -4,7 +4,7 @@
       <h1>Flat in
         <%= @flat.city %>,
         <%= @flat.flat_location %></h1>
-      <p>Description place holder</p>
+      <p><%= @flat.address %></p>
     </div>
   </div>
 
@@ -13,6 +13,7 @@
     <div class="apartment-info">
       <p>Price per night: €<%= @flat.price %></p>
       <p>Flat Owner: <%= @flat.user.first_name %></p>
+      <p>Description: <%= @flat.description %></p>
     </div>
   </div>
 
