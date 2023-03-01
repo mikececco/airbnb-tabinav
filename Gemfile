@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
 
+#Formatting HTML files
+gem 'erb-formatter'
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.2"
 
@@ -83,3 +86,4 @@ gem "devise"
 gem 'faker'
 gem "pundit"
 
+gem "geocoder"

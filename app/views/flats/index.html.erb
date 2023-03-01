@@ -1,14 +1,23 @@
-<div class="m-5 p-5 text-center bg-dark rounded-4">
-  <% if @flats == [] %>
+<div class="m-5 p-4 text-center bg-dark rounded-4">
+  <% if @query == "" %>
+    <h1>All Flats</h1>
+  <% elsif @flats == [] %>
     <h1>No flats in "<%= @query.upcase %>"</h1>
     <h1><%= link_to root_path, class: "btn btn-primary btn-flat rounded-5" do %>
       <i class="fas fa-search text-white"></i> Search again
     <% end %></h1>
-  <% elsif @query == "" %>
-    <h1>All Flats</h1>
   <% else %>
     <h1>Flats in "<%= @query.upcase %>"</h1>
   <% end %>
 </div>
 
-<%= render "shared/flatspage", flats: @flats  %>
+<div class="d-flex justify-content-center m-5">
+  <div style="width: 400px; height: 60vh; position: sticky; top: 36px"
+    class="me-5 rounded-4"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
+
+  <%= render "shared/flatspage", flats: @flats  %>
+
+</div>
