@@ -4,38 +4,40 @@
       <a class="navbar-brand" href="/">
         <%= image_tag('logo_tabinav.png') %>
       </a>
-      <ul class="navbar-nav me-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/flats">Listings</a>
-          </li>
+      <ul class="navbar-nav me-auto align-items-center">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/flats">Listings</a>
+        </li>
       </ul>
     </div>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-            <% if user_signed_in? %>
-              <li class="nav-item active align-item-center">
-                <a class="nav-link" href="#">Welcome, <%= current_user.first_name.capitalize %></a>
-              </li>
-              <li class="nav-item active">
-                <%= link_to "Edit profile", edit_user_registration_path, class:"nav-link nav-link btn btn-secondary btn-flat mx-2 rounded-5 text-white" %>
-              </li>
-              <li class="nav-item active">
-                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link btn btn-primary btn-flat mx-2 rounded-5 text-white" %>
-              </li>
+        <% if user_signed_in? %>
+          <li class="nav-item active align-item-center dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
-            <% else %>
-              <li class="nav-item active">
-                <%= link_to "Log in", user_session_path, class:"nav-link btn btn-primary btn-flat mx-2 rounded-5 text-white" %>
+            </a>
+            <ul class="dropdown-menu pr-5 dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <li>
+                <%= link_to "Edit profile", edit_user_registration_path, class:"dropdown-item" %>
               </li>
-              <li class="nav-item active">
-                <%= link_to "Sign up", new_user_registration_path, class:"nav-link btn btn-secondary mx-2 rounded-5 text-white" %>
+              <li>
+                <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
               </li>
-            <% end %>
+            </ul>
           </li>
+        <% else %>
+          <li class="nav-item active">
+            <%= link_to "Log in", user_session_path, class:"nav-link btn btn-primary btn-flat mx-2 rounded-5 text-white" %>
+          </li>
+          <li class="nav-item active">
+            <%= link_to "Sign up", new_user_registration_path, class:"nav-link btn btn-secondary mx-2 rounded-5 text-white" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
