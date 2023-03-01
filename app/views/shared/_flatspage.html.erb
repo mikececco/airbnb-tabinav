@@ -1,13 +1,20 @@
 <div class="flats-container">
   <% @flats.each do |flat| %>
-  <a href="<%= flat_path(flat) %>" class="flat">
-      <% if flat.photo.key  %>
-      <img src="<%= cl_image_path(flat.photo.key)%>">
-    <% end %>
-      <h2><%= flat.city %></h2>
-      <p><%= flat.user.first_name %></p>
-      <p> €<%= flat.price.to_i %></p>
-    </a>
+    <div class="col">
+      <div class="card h-100">
+        <% if flat.photo.key %>
+          <img src="<%= cl_image_path(flat.photo.key)%>" class="card-img-top" alt="<%= flat.city %>">
+        <% else %>
+          <img src="https://via.placeholder.com/300x200.png?text=No+Image" class="card-img-top" alt="<%= flat.city %>">
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"><%= flat.city %></h5>
+          <p class="card-text"><%= flat.user.first_name %></p>
+          <p class="card-text"><%= number_to_currency(flat.price, unit: "€", precision: 0) %></p>
+          <a href="<%= flat_path(flat) %>" class="btn btn-primary">View details</a>
+        </div>
+      </div>
+    </div>
   <% end %>
 </div>
 
