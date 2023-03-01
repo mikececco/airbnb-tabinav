@@ -26,21 +26,19 @@ puts "Creating 30 flats in NL..."
 nl_addresses = {
   "Amsterdam" => ["537 Pinasstraat", "572 Kloekhorststraat", "IJsbaanpad 9", "18, Erik de Roodestraat", "5C, Vincent van Gogh Street", "4, Koningin Wilhelminaplein", "371, Prinseneiland", "23, Pennyhof", "29, M.C. Addicksstraat", "207, Van der Palmkade"],
   "Rotterdam" => ["12, Keilezijweg", "131, Bunschotenweg", "60A, Westerbeekstraat", "39, Charlie Shaverslaan", "31, Jean Sibeliusstraat", "6, Mesdaglaan", "48A, Burgemeester Hoffmanplein", "Galvanaistraat", "364, Plaszoom", "125, Tinbergenlaan"],
-  "Utrecht" => ["Torenburg 6", "Prinses Beatrixstraat 8", "Mozartlaan 29", "Orchideeënstraat 11", "Scharenslijperspad 25"],
-  "The Hague" => ["Van Marumstraat 14", "Vijzelstraat 2", "Johannes Vijghstraat 28", "Rijnstraat 15", "Berkter Hei 2"]
+  "Utrecht" => ["Mozartlaan 29", "Nieuwegracht", "Maliesingel 9-6", "Lamérislaan 33-55", "R.A. Kartinistraat"],
+  "The Hague" => ["Roggekamp 90", "Dwingelostraat", "Heliotrooplaan 38", "Haviklaan 20", "Walenburg 6"]
 }
 
 nl_addresses.each do |city, array|
   array.each do |street|
     file = URI.open("https://source.unsplash.com/random/600x400/?#{city}")
     price = rand(39..109)
-    description = "- Free parking on site\n
-                  - Indoor swimming pool\n
-                  - Not suitable for youth groups\n
-                  - Optional: Bedlinen incl towels\n\n
-
-                  No pets allowed\n
-                  Minimum age: 18 years"
+    description = "Bumble Barn has a large sitting, dining and kitchen area, opening onto the patio with views of the horse paddocks, open field and trees.
+    Sitting Room has a smart 4K TV.
+    Fully equipped kitchen with large fridge/freezer.
+    Main bedroom with king sized double bed and en suite shower room. Optional colour changing LED lighting.
+    2 twin bedrooms. Main bathroom with bath/shower"
     flat = Flat.new(address: street, city: city, flat_location: "NL", price: price, user: admin, description: description)
     flat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
     flat.save!
