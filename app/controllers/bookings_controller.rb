@@ -1,6 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where(params[:user_id] == current_user)
   end
 
   # # show: will display the details of a specific booking, such as the price and location
@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @flat = Flat.find(params[:flat_id])
     @booking.flat = @flat
     @booking.user = current_user
-    
+
     if @booking.save
       redirect_to root_path
     else
