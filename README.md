@@ -4,4 +4,5 @@ Airbnb clone created and mantained by
   <img src="https://contrib.rocks/image?repo=mikececco/airbnb-tabinav" />
 </a>
 
-Visit at: https://airbnb-tabinav.herokuapp.com/
+
+Check it out at: https://airbnb-tabinav.herokuapp.com/
