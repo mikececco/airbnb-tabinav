@@ -1,7 +1,11 @@
 <div class="page-container">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')">
+  <div
+    class="banner"
+    style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')"
+  >
     <div class="banner-container">
-      <h1>Flat in <%= @flat.city %>,<%= @flat.flat_location %></h1>
+      <h1>Flat in
+        <%= @flat.city %>,<%= @flat.flat_location %></h1>
       <p><%= @flat.address %></p>
     </div>
   </div>
@@ -35,14 +39,14 @@
         <h1>Reviews</h1>
 
         <div class="reviews">
-          <%# <% @flat.reviews.each do |review| %>
-            <%# <div class="review"> %>
-              <%# <p><%= review.rating %>
-                <%# stars</p> %>
-              <%# <p><%= review.title %>
-              <%# <p><%= review.description %>
-            <%# </div> %>
-          <%# <% end %>
+          <% @flat.reviews.each do |review| %>
+            <div class="review">
+              <p><%= review.rating %>
+                stars</p>
+              <p><%= review.title %></p>
+              <p><%= review.description %></p>
+            </div>
+          <% end %>
         </div>
 
       </div>
@@ -55,4 +59,8 @@
   </div>
 </div>
 
-<%# <%= link_to "Book", new_flat_booking_path(@flat), class: "btn btn-primary" %>
+<% if @booking.present? %>
+  <% if @booking.review.nil? %>
+    <%= render "reviews/new", booking: @booking %>
+  <% end %>
+<% end %>
