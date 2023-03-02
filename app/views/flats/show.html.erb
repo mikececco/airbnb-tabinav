@@ -10,42 +10,52 @@
     </div>
   </div>
 
-  <div
-    class="parent-container justify-content-between px-5"
-    style="display: flex; flex-wrap: wrap;"
-  >
+  <div class="info-container px-5 py-3 mb-3 mx-5">
+   <%# style="display: flex; flex-wrap: wrap;"> %>
+    <div class="row justify-content-center px-3">
+      <div class="booking-info col-7">
 
-    <div class="booking-info m-5">
-      <h2>Apartment Information</h2>
-      <div class="apartment-info">
-        <p>Price per night: €<%= @flat.price %></p>
-        <p>Flat Owner:
-          <%= @flat.user.first_name %></p>
-        <p>Description:
-          <%= @flat.description %></p>
-      </div>
-    </div>
+        <div class="apartment-info">
 
-    <div class="reviews">
-      <h2>Reviews</h2>
-      <% @flat.reviews.each do |review| %>
-        <div class="review">
-          <p><%= review.rating %>
-            stars</p>
-          <p><%= review.title %></p>
-          <p><%= review.description %></p>
+            <h2>€<%= @flat.price %> / night</h2>
+            <br>
+            <h4>
+              <i class="fa-solid fa-house"></i>  50m<sup>2</sup> |
+              <i class="fa-solid fa-user"></i>  3-4 |
+              <i class="fa-solid fa-bed"></i>  2 |
+              <i class="fa-solid fa-restroom"></i>  1.5 |
+              <i class="fa-sharp fa-solid fa-door-closed"></i>  Self check-in
+            </h4>
+            <br>
+            <h4>Rental unit hosted by <%= @flat.user.first_name %></h4>
+          <br>
         </div>
-      <% end %>
-    </div>
+          <p><%= @flat.description %></p>
 
-    <div class="m-5 border p-5">
-      MORE PICTURESSS
-    </div>
+        <div class="m-3 border p-5">
+          MORE PICTURESSS
+        </div>
 
-    <div class="booking-form-container m-5">
-      <%= render "shared/new", flat: @flat, booking: Booking.new %>
-    </div>
+        <h1>Reviews</h1>
 
+        <div class="reviews">
+          <% @flat.reviews.each do |review| %>
+            <div class="review">
+              <p><%= review.rating %>
+                stars</p>
+              <p><%= review.title %></p>
+              <p><%= review.description %></p>
+            </div>
+          <% end %>
+        </div>
+
+      </div>
+
+      <div class="booking-form col-4 ms-5">
+        <%= render "shared/new", flat: @flat, booking: Booking.new %>
+      </div>
+
+    </div>
   </div>
 </div>
 
@@ -54,10 +64,3 @@
     <%= render "reviews/new", booking: @booking %>
   <% end %>
 <% end %>
-
-<%# if @reviews.present?
-if current_user.bookings.includes(@flat) && booking.review.nil?
-  show simple form
-else
-  ""
-end %>
