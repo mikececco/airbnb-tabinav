@@ -7,8 +7,8 @@ class BookingsController < ApplicationController
 
   # show: will display the details of a specific booking, such as the price and location
   def show
+    authorize @booking
     @flat = @booking.flat
-    authorize(@booking)
   end
 
   # new: will display a form to create a new booking
