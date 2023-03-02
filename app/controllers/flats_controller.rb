@@ -17,6 +17,7 @@ class FlatsController < ApplicationController
         info_window_html: render_to_string(partial: "info_window", locals: {flat: flat})
       }
     end
+    @flat = Flat.new
   end
 
   # show: will display the details of a specific flat, such as the price and location
@@ -33,6 +34,7 @@ class FlatsController < ApplicationController
     @flat = Flat.new(flat_params)
     @flat.user = current_user
     if @flat.save
+      raise
       redirect_to flat_path(@flat)
     else
       render :new, status: :unprocessable_entity
