@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show]
+  before_action :set_booking, only: %i[show edit update]
 
   def index
     @bookings = Booking.where(params[:user_id] == current_user)
@@ -27,10 +27,30 @@ class BookingsController < ApplicationController
 
 
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to booking_path(@booking), notice: "Booking confirmed"
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    authorize(@booking)
+  end
+
+  def update
+    authorize(@booking)
+    if @booking.update(booking_params)
+      redirect_to bookings_path(@booking), notice: "Booking edited added"
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    authorize(@booking)
+    @booking.destroy
+    # No need for app/views/restaurants/destroy.html.erb
+    # redirect_to bookings_path, status: :see_other
   end
 
   private

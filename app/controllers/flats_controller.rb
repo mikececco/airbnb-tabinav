@@ -37,21 +37,27 @@ class FlatsController < ApplicationController
     @flat.user = current_user
     authorize(@flat)
     if @flat.save
-      redirect_to flat_path(@flat)
+      redirect_to flat_path(@flat), notice: "Flat added"
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
+    authorize(@flat)
   end
 
   def update
-    @flat.update(flat_params)
-    redirect_to flat_path(@flat)
+    authorize(@flat)
+    if @flat.update(flat_params)
+      redirect_to flat_path(@flat), notice: "Flat updated"
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
+    authorize(@flat)
     @flat.destroy
     # No need for app/views/restaurants/destroy.html.erb
     redirect_to flats_path, status: :see_other
