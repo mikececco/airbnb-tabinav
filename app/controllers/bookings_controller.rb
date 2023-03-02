@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     @flat = Flat.find(params[:flat_id])
-    authorize(@booking)
+    authorize @booking
   end
 
   def create
@@ -23,7 +23,7 @@ class BookingsController < ApplicationController
     @flat = Flat.find(params[:flat_id])
     @booking.flat = @flat
     @booking.user = current_user
-    authorize(@booking)
+    authorize @booking
 
 
     if @booking.save
@@ -34,11 +34,11 @@ class BookingsController < ApplicationController
   end
 
   def edit
-    authorize(@booking)
+    authorize @booking
   end
 
   def update
-    authorize(@booking)
+    authorize @booking
     if @booking.update(booking_params)
       redirect_to bookings_path(@booking), notice: "Booking edited added"
     else
@@ -47,7 +47,7 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-    authorize(@booking)
+    authorize @booking
     @booking.destroy
     # No need for app/views/restaurants/destroy.html.erb
     # redirect_to bookings_path, status: :see_other
