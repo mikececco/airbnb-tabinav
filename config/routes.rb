@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :flats do
     resources :bookings, only: [:new, :create]
   end
-
-  resources :bookings, only: [:index, :show, :edit, :update, :destroy]
+  resources :bookings, only: %i[index show edit update destroy] do
+    resources :reviews, only: [:new, :create]
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

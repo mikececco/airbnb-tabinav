@@ -2,13 +2,20 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update]
 
   def index
-    @bookings = Booking.where(params[:user_id] == current_user)
+    if current_user.role == "renter"
+      @bookings = Booking.where("user = current_user")
+    else
+      @bookings = Booking.joins(:flat).where(params[:user_id] == current_user.id)
+    end
   end
 
   # show: will display the details of a specific booking, such as the price and location
   def show
     authorize @booking
     @flat = @booking.flat
+    # @booking = Booking.find(params[:id])
+    # @flat = Flat.find(@booking.flat.id)
+    @review = Review.new
   end
 
   # new: will display a form to create a new booking
