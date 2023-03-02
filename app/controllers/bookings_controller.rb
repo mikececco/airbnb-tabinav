@@ -1,10 +1,6 @@
 class BookingsController < ApplicationController
   def index
-    if current_user.role == "renter"
-      @bookings = Booking.where("user = current_user")
-    else
-      @bookings = Booking.joins(:flat).where(params[:user_id] == current_user.id)
-    end
+      @bookings = current_user.bookings
   end
 
   # show: will display the details of a specific booking, such as the price and location

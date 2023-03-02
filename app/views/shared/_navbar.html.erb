@@ -25,13 +25,11 @@
               <li>
                 <%= link_to "My Bookings", bookings_path, class:"dropdown-item" %>
               </li>
-
-              <% if current_user.role == "host" %>
-                <li>
-                  <%= link_to "My Listings", listings_path, class:"dropdown-item" %>
-                </li>
-              <% end %>
-
+<%# if have listing %>
+              <li>
+                <%= link_to "My Listings", my_listings_path, class:"dropdown-item" %>
+              </li>
+<%# if no listing -> List your flat! %>
               <li>
                 <%= link_to "Edit profile", edit_user_registration_path, class:"dropdown-item" %>
               </li>
