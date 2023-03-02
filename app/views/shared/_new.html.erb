@@ -1,6 +1,6 @@
-<%= simple_form_for [flat, booking], :html=> { class: 'form-group booking-form' } do |f| %>
-  <h1 class="text-black">Your booking for <%=@flat.address%>, <%=@flat.flat_location%> </h1>
-  <%= f.input :start_date, input_html: { class: 'form-control form-control-sm' } %>
-  <%= f.input :end_date, input_html: { class: 'form-control form-control-sm' } %>
-  <%= f.submit class:"btn btn-primary btn-sm rounded-5" %>
+<%= simple_form_for [flat, booking], html: {class: "form-group"} do |f| %>
+  <h1 class="text-black mb-4">Book this apartment</h1>
+  <%= f.input :start_date, label: "Check-in date", input_html: { class: 'form-control mb-4' } %>
+  <%= f.input :end_date, label: "Check-out date", input_html: { class: 'form-control mb-4' } %>
+  <%= f.submit "Book now", class: "btn btn-primary rounded-5" %>
 <% end %>
