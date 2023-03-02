@@ -23,6 +23,16 @@
             </a>
             <ul class="dropdown-menu pr-5 dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li>
+                <%= link_to "My Bookings", bookings_path, class:"dropdown-item" %>
+              </li>
+
+              <% if current_user.role == "host" %>
+                <li>
+                  <%= link_to "My Listings", listings_path, class:"dropdown-item" %>
+                </li>
+              <% end %>
+
+              <li>
                 <%= link_to "Edit profile", edit_user_registration_path, class:"dropdown-item" %>
               </li>
               <li>
