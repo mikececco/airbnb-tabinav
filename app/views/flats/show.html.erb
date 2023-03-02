@@ -25,6 +25,7 @@
       <%= render "shared/new", flat: @flat, booking: Booking.new %>
     </div>
 
+    <%= @flat.user.email  %>
     <%= link_to "Edit", edit_flat_path(@flat) %>
     <%= link_to "Delete",
       flat_path(@flat),
