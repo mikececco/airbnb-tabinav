@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   def skip_pundit?
     # params[:controller] == "pages" && params[:action] == "home"
     # params[:controller] == "flats" && params[:action] == "index"
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)|(^flats$)/
+    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)|(^flats$)|(^bookings$)/
     # params[:controller] == "pages" && params[:action] == "home" ||
     # params[:controller] == "flats" && params[:action] == "index"
   end
