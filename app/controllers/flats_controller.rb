@@ -22,6 +22,7 @@ class FlatsController < ApplicationController
   # show: will display the details of a specific flat, such as the price and location
   def show
     @flat = Flat.find(params[:id])
+    @booking = @flat.bookings.find_by(user_id: current_user.id)
   end
 
   # new: will display a form to create a new flat

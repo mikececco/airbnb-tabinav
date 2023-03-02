@@ -6,7 +6,8 @@ class BookingsController < ApplicationController
   # show: will display the details of a specific booking, such as the price and location
   def show
     @booking = Booking.find(params[:id])
-    @flat = @booking.flat
+    @flat = Flat.find(@booking.flat.id)
+    @review = Review.new
   end
 
   # new: will display a form to create a new booking

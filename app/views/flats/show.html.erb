@@ -1,24 +1,45 @@
 <div class="page-container">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')">
+  <div
+    class="banner"
+    style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')"
+  >
     <div class="banner-container">
-      <h1>Flat in <%= @flat.city %>,<%= @flat.flat_location %></h1>
+      <h1>Flat in
+        <%= @flat.city %>,<%= @flat.flat_location %></h1>
       <p><%= @flat.address %></p>
     </div>
   </div>
 
-  <div class="parent-container justify-content-between px-5" style="display: flex; flex-wrap: wrap;">
+  <div
+    class="parent-container justify-content-between px-5"
+    style="display: flex; flex-wrap: wrap;"
+  >
 
     <div class="booking-info m-5">
       <h2>Apartment Information</h2>
       <div class="apartment-info">
         <p>Price per night: €<%= @flat.price %></p>
-        <p>Flat Owner: <%= @flat.user.first_name %></p>
-        <p>Description: <%= @flat.description %></p>
+        <p>Flat Owner:
+          <%= @flat.user.first_name %></p>
+        <p>Description:
+          <%= @flat.description %></p>
       </div>
     </div>
 
+    <div class="reviews">
+      <h2>Reviews</h2>
+      <% @flat.reviews.each do |review| %>
+        <div class="review">
+          <p><%= review.rating %>
+            stars</p>
+          <p><%= review.title %></p>
+          <p><%= review.description %></p>
+        </div>
+      <% end %>
+    </div>
+
     <div class="m-5 border p-5">
-    MORE PICTURESSS
+      MORE PICTURESSS
     </div>
 
     <div class="booking-form-container m-5">
@@ -28,4 +49,15 @@
   </div>
 </div>
 
-<%# <%= link_to "Book", new_flat_booking_path(@flat), class: "btn btn-primary" %>
+<% if @booking.present? %>
+  <% if @booking.review.nil? %>
+    <%= render "reviews/new", booking: @booking %>
+  <% end %>
+<% end %>
+
+<%# if @reviews.present?
+if current_user.bookings.includes(@flat) && booking.review.nil?
+  show simple form
+else
+  ""
+end %>
