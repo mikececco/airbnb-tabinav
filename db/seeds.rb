@@ -32,7 +32,10 @@ nl_addresses = {
 
 nl_addresses.each do |city, array|
   array.each do |street|
+    puts street
+    puts "image start upload"
     file = URI.open("https://source.unsplash.com/random/600x400/?#{city}")
+    puts "image uploaded"
     price = rand(39..109)
     description = "Bumble Barn has a large sitting, dining and kitchen area, opening onto the patio with views of the horse paddocks, open field and trees.
     Sitting Room has a smart 4K TV.
