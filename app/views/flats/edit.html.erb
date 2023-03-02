@@ -1,0 +1,9 @@
+  <%= simple_form_for @flat, :html=> { class: 'form-group p-5' } do |f| %>
+    <h1 class="text-black">Edit</h1>
+    <%= f.input :price %>
+    <%= f.input :address, hint: "Streetname and postcode" %>
+    <%= f.input :city, collection: Flat::CITIES, as: :radio_buttons %>
+    <%= f.input :flat_location, collection: Flat::COUNTRIES, as: :radio_buttons %>
+    <%# <%= image_tag f.object.img.url if f.object.image.present? %>
+  <%= f.submit %>
+<% end %>
