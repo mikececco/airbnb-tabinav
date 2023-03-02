@@ -2,7 +2,7 @@ class BookingsController < ApplicationController
   before_action :set_booking, only: %i[show edit update]
 
   def index
-      @bookings = current_user.bookings
+    @bookings = current_user.bookings
   end
 
   # show: will display the details of a specific booking, such as the price and location

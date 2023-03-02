@@ -73,9 +73,3 @@
     <% end %>
   </div>
 </div>
-
-<% if @booking.present? %>
-  <% if @booking.review.nil? %>
-    <%= render "reviews/new", booking: @booking %>
-  <% end %>
-<% end %>

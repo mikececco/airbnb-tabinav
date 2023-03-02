@@ -12,14 +12,3 @@
     <i class="fa-solid fa-calendar-days"></i>  View My Bookings
   <% end %></h1>
 </div>
-
-<% if policy(@booking).edit? %>
-  <%= link_to "Edit", edit_booking_path(@booking) %>
-<% end %>
-
-<% if policy(@booking).destroy? %>
-  <%= link_to "Delete",
-    booking_path(@booking),
-    data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-  %>
-<% end %>
