@@ -32,19 +32,22 @@
         </div>
           <p><%= @flat.description %></p>
 
-        <div class="m-3 border p-5">
+        <div class="my-5 border p-5">
           MORE PICTURESSS
         </div>
 
-        <h1>Reviews</h1>
+        <% if @flat.reviews.present?%>
+        <h4>Reviews</h4>
+        <% end %>
+
 
         <div class="reviews">
           <% @flat.reviews.each do |review| %>
             <div class="review">
-              <p><%= review.rating %>
-                stars</p>
-              <p><%= review.title %></p>
-              <p><%= review.description %></p>
+              <p> Rating: <%= review.rating %>
+                &#9733;</p>
+              <p>Title: <%= review.title %></p>
+              <p>Description: <%= review.description %></p>
             </div>
           <% end %>
         </div>
@@ -56,6 +59,18 @@
       </div>
 
     </div>
+
+    <%= @flat.user.email  %>
+    <% if policy(@flat).edit? %>
+      <%= link_to "Edit", edit_flat_path(@flat) %>
+    <% end %>
+
+    <% if policy(@flat).destroy? %>
+      <%= link_to "Delete",
+        flat_path(@flat),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      %>
+    <% end %>
   </div>
 </div>
 
