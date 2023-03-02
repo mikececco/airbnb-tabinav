@@ -5,6 +5,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    authorize(@review)
     @booking = Booking.find(params[:booking_id])
   end
 
@@ -13,6 +14,7 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @flat = Flat.find(@booking.flat.id)
     @review.booking = @booking
+    authorize(@review)
     if @review.save
       flash[:success] = "Review created successfully!"
       redirect_to flat_path(@booking.flat)
