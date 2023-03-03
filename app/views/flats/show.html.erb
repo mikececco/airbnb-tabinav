@@ -1,8 +1,5 @@
 <div class="page-container">
-  <div
-    class="banner"
-    style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')"
-  >
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')">
     <div class="banner-container">
       <h1>Flat in
         <%= @flat.city %>, <%= @flat.flat_location %></h1>
@@ -66,17 +63,5 @@
       </div>
 
     </div>
-
-    <%= @flat.user.email  %>
-    <% if policy(@flat).edit? %>
-      <%= link_to "Edit", edit_flat_path(@flat) %>
-    <% end %>
-
-    <% if policy(@flat).destroy? %>
-      <%= link_to "Delete",
-        flat_path(@flat),
-        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
-      %>
-    <% end %>
   </div>
 </div>
