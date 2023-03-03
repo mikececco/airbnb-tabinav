@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update]
+  before_action :set_booking, only: %i[show edit destroy update]
 
   def index
     @bookings = current_user.bookings
@@ -52,7 +52,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.destroy
     # No need for app/views/restaurants/destroy.html.erb
-    # redirect_to bookings_path, status: :see_other
+    redirect_to bookings_path, status: :see_other
   end
 
   private

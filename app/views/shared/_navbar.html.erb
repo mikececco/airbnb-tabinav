@@ -16,10 +16,10 @@
 
     <div class="collapse navbar-collapse me-5" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto align-items-center">
-        <li class="nav-item me-2">
-          <a class="nav-link disabled text-dark" href="#"><%= current_user.first_name %> <%= current_user.last_name %></a>
-        </li>
         <% if user_signed_in? %>
+          <li class="nav-item me-2">
+            <a class="nav-link disabled text-dark" href="#"><%= current_user.first_name %> <%= current_user.last_name %></a>
+          </li>
           <li class="nav-item active align-item-center dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <img class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
