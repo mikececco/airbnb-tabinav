@@ -2,6 +2,12 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
+import { displayLogo } from "./coolbookinganimation"
+
+document.addEventListener("turbo:load", () => {
+  displayLogo()
+})
+
 
 // const list = document.querySelector('#search');
 // console.log(list);

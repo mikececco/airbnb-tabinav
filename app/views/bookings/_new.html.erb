@@ -1,0 +1,8 @@
+<%= simple_form_for [flat, booking], :html=> { class: 'form-group booking-form' } do |f| %>
+  <h1 class="text-black">Your booking for <%=@flat.address%>, <%=@flat.flat_location%> </h1>
+  <%= f.input :start_date, input_html: { class: 'form-control form-control-sm' } %>
+  <%= f.input :end_date, input_html: { class: 'form-control form-control-sm' } %>
+  <%= f.submit class:"btn btn-primary btn-sm rounded-5" %>
+<% end %>
+
+<%= button_to 'Book now', listing_bookings_path(@listing), method: :post, onclick: 'displayLogo()' %>
