@@ -1,6 +1,5 @@
-<div class="flats-container">
+<div class="flats-container rounded-4">
   <% @flats.each do |flat| %>
-    <div class="col">
       <div class="card h-100">
         <% if flat.photo.key %>
           <img src="<%= cl_image_path(flat.photo.key)%>" class="card-img-top" alt="<%= flat.city %>">
@@ -8,13 +7,12 @@
           <img src="https://via.placeholder.com/300x200.png?text=No+Image" class="card-img-top" alt="<%= flat.city %>">
         <% end %>
         <div class="card-body">
-          <h5 class="card-title"><%= flat.city %></h5>
+          <h5 class="card-title text-black font-weight-bold"><%= flat.city %></h5>
           <p class="card-text">Host: <%= flat.user.first_name %></p>
           <p class="card-text"><%= number_to_currency(flat.price, unit: "€", precision: 0) %> / night</p>
-          <a href="<%= flat_path(flat) %>" class="btn btn-secondary">View details</a>
+          <a href="<%= flat_path(flat) %>" class="btn btn-secondary rounded-pill">View details</a>
         </div>
       </div>
-    </div>
   <% end %>
 </div>
 
