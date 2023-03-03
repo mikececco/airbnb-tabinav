@@ -28,7 +28,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
 
-
     if @booking.save
       redirect_to booking_path(@booking), notice: "Booking confirmed"
     else
