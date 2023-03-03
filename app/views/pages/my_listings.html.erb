@@ -33,6 +33,9 @@
             <p class="card-text">Host: <%= flat.user.first_name %></p>
             <p class="card-text"><%= number_to_currency(flat.price, unit: "€", precision: 0) %> / night</p>
             <a href="<%= flat_path(flat) %>" class="btn btn-secondary">View details</a>
+            <% if flat.bookings == [] %>
+    <a href="<%= flat_path(flat) %>" class="btn btn-secondary">Remove Flat</a>
+            <% end %>
           </div>
         </div>
 
