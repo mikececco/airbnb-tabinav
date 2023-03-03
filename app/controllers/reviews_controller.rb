@@ -22,19 +22,6 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # def create
-  #   @booking = Booking.find(params[:booking_id])
-  #   @review = @booking.reviews.build(review_params)
-
-  #   if @review.save
-  #     flash[:success] = "Review created successfully!"
-  #     redirect_to flat_path(@booking.flat)
-  #   else
-  #     flash[:error] = "Failed to create review"
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
-
   private
 
   def review_params
