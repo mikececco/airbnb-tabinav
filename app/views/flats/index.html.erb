@@ -1,5 +1,6 @@
 <% if @flats.empty? %>
   <div class="m-5 pt-4 px-5 text-black">
+
     <h1 class="text-black">No flats in "<%= @query.upcase %>"</h1>
     <h1 class="text-black">
       <%= link_to root_path, class: "btn btn-primary btn-flat rounded-5" do %>
@@ -9,6 +10,7 @@
   </div>
 <% elsif @query.present? %>
   <div class="m-5 pt-4 px-5 text-black">
+
     <h1 class="text-black">Flats in "<%= @query.upcase %>"</h1>
   </div>
 <% end %>
