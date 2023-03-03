@@ -1,10 +1,14 @@
-
-  <%= simple_form_for @flat, :html=> { class: 'form-group p-5' } do |f| %>
-    <h1 class="text-black">Create new flat</h1>
-    <%= f.input :price, collection: 1..100, input_html: { class: 'form-control' } %>
-    <%= f.input :address, hint: "Streetname and postcode" %>
-    <%= f.input :city, collection: Flat::CITIES, as: :radio_buttons %>
-    <%= f.input :flat_location, collection: Flat::COUNTRIES, as: :radio_buttons %>
-    <%= f.input :photo, as: :file %>
-    <%= f.submit class:"btn btn-primary rounded-5" %>
-  <% end %>
+<div class="container">
+  <div class="row justify-content-center align-items-center m-5 p-4 border border-3 rounded-5">
+    <%= simple_form_for @flat, :html=> { class: 'form-group p-5' } do |f| %>
+      <h1 class="text-black">Create new flat</h1>
+      <%= f.input :price, collection: 1..100, input_html: { class: 'form-control' } %>
+      <%= f.input :address, hint: "Streetname and postcode" %>
+      <%= f.input :description %>
+      <%= f.input :city, collection: Flat::CITIES, as: :radio_buttons %>
+      <%= f.input :flat_location, collection: Flat::COUNTRIES, as: :radio_buttons %>
+      <%= f.input :photo, as: :file %>
+      <%= f.submit class:"btn btn-primary rounded-5" %>
+    <% end %>
+  </div>
+</div>
