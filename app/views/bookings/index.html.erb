@@ -32,10 +32,10 @@
               <h5 class="card-title"><%= booking.flat.city %></h5>
               <p class="card-text">Hosted by: <%= booking.flat.user.first_name %></p>
               <p class="card-text"><%= number_to_currency(booking.flat.price, unit: "€", precision: 0) %> / night</p>
-              <a href="<%= flat_path(booking.flat) %>" class="btn btn-secondary">View flat details</a>
-              <a href="<%= edit_booking_path(booking) %>" class="btn btn-secondary">Edit Dates</a>
-              <%= link_to "Cancel Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", class: "btn btn-secondary"} %>
-              <%= link_to "Add a review", new_booking_review_path(booking), class: "btn btn-primary" %>
+              <a href="<%= flat_path(booking.flat) %>" class="btn btn-secondary">Flat Details</a>
+              <a href="<%= edit_booking_path(booking) %>" class="btn btn-secondary"><i class="fa-solid fa-pen-to-square"></i></a>
+              <a href="<%= booking_path(booking) %>" class="btn btn-secondary my-2 text-white" data-turbo-method="delete" data-turbo-confirm="Are you sure?"><i class="fa-solid fa-square-xmark"></i></a>
+              <%= link_to "Add a review", new_booking_review_path(booking), class: "btn btn-primary text-white" %>
             </div>
           </div>
         </div>
