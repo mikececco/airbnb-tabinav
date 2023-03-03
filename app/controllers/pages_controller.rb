@@ -3,4 +3,8 @@ class PagesController < ApplicationController
 
   def home
   end
+
+  def my_listings
+    @flats = current_user.flats
+  end
 end

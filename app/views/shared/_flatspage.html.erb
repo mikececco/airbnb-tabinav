@@ -9,8 +9,8 @@
         <% end %>
         <div class="card-body">
           <h5 class="card-title"><%= flat.city %></h5>
-          <p class="card-text"><%= flat.user.first_name %></p>
-          <p class="card-text"><%= number_to_currency(flat.price, unit: "€", precision: 0) %></p>
+          <p class="card-text">Host: <%= flat.user.first_name %></p>
+          <p class="card-text"><%= number_to_currency(flat.price, unit: "€", precision: 0) %> / night</p>
           <a href="<%= flat_path(flat) %>" class="btn btn-secondary">View details</a>
         </div>
       </div>

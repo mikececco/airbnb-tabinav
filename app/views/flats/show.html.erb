@@ -5,7 +5,7 @@
   >
     <div class="banner-container">
       <h1>Flat in
-        <%= @flat.city %>,<%= @flat.flat_location %></h1>
+        <%= @flat.city %>, <%= @flat.flat_location %></h1>
       <p><%= @flat.address %></p>
     </div>
   </div>
@@ -73,9 +73,3 @@
     <% end %>
   </div>
 </div>
-
-<% if @booking.present? %>
-  <% if @booking.review.nil? %>
-    <%= render "shared/newreviews", booking: @booking %>
-  <% end %>
-<% end %>
