@@ -1,6 +1,11 @@
-<%= simple_form_for [@booking, Review.new] do |f| %>
-  <%= f.input :rating, label: "Rating" %>
-  <%= f.input :title, label: "Title" %>
-  <%= f.input :description, label: "Description" %>
-  <%= f.button :submit, "Submit review" %>
-<% end %>
+<div style="min-height: 75vh">
+  <div class="container w-25 bg-white mt-5 p-5">
+    <h4>How did you like your booking?</h4>
+    <%= simple_form_for [@booking, Review.new] do |f| %>
+      <%= f.input :rating, label: "Rating" %>
+      <%= f.input :title, label: "Title" %>
+      <%= f.input :description, label: "Description" %>
+      <%= f.submit class:"btn btn-primary btn-sm rounded-5" %>
+    <% end %>
+  </div>
+</div>
