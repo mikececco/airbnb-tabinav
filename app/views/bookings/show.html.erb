@@ -1,8 +1,21 @@
-<div class="m-5 p-4 text-center bg-dark rounded-4">
+<div id="animation" class="m-5 p-4 text-center bg-dark rounded-4">
   <h1>Booking successful!</h1>
 
-  <h3>Your stay in <%= @flat.address %>, <%= @flat.city %>, <%= @flat.flat_location %></h3>
-  <h3>From <strong><%= @booking.start_date %></strong> to <strong><%= @booking.end_date %></strong></h3>
+  <%= image_tag(
+    "le-wagon-logo-svg",
+    style: "display: none; width: 230px;",
+    id: "my-image"
+  ) %>
+  <img src="" alt="" style="display: none;" id="myimage">
+
+  <h3>Your stay in
+    <%= @flat.address %>,
+    <%= @flat.city %>,
+    <%= @flat.flat_location %></h3>
+  <h3>From
+    <strong><%= @booking.start_date %></strong>
+    to
+    <strong><%= @booking.end_date %></strong></h3>
 
   <p style="color: white;">Price per night: €<%= @flat.price %></p>
 </div>
