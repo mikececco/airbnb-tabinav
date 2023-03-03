@@ -1,5 +1,6 @@
 <% if @flats.empty? %>
-  <div class="m-5 p-4 text-black">
+  <div class="m-5 pt-4 px-5 text-black">
+
     <h1 class="text-black">No flats in "<%= @query.upcase %>"</h1>
     <h1 class="text-black">
       <%= link_to root_path, class: "btn btn-primary btn-flat rounded-5" do %>
@@ -8,10 +9,20 @@
     </h1>
   </div>
 <% elsif @query.present? %>
-  <div class="m-5 p-4 text-black">
+  <div class="m-5 pt-4 px-5 text-black">
+
     <h1 class="text-black">Flats in "<%= @query.upcase %>"</h1>
   </div>
 <% end %>
+
+<form novalidate="novalidate" class="simple_form search" action="/flats" accept-charset="UTF-8" method="get">
+  <div class="d-flex justify-content-center w-50 m-5 text-center ps-5">
+    <input class="form-control rounded-pill me-3" type="text" name="search" id="search_query" placeholder="Search by location">
+    <button name="button" type="submit" class="btn btn-primary rounded-pill ps-4 pe-3 text-white text-center">
+      <i class="fas fa-search me-2"></i>
+    </button>
+  </div>
+</form>
 
 <div class="d-flex justify-content-center m-5">
   <div class="me-5 rounded-4" style="width: 400px; height: 60vh; position: sticky; top: 36px"

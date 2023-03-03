@@ -1,45 +1,42 @@
 <div class="page-container">
-  <div
-    class="banner"
-    style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')"
-  >
+  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6)), url('<%= cl_image_path(@flat.photo.key) %>'); max-width:100%; max-height:100%; background-size: cover;">
     <div class="banner-container">
-      <h1>Flat in
-        <%= @flat.city %>,
-        <%= @flat.flat_location %></h1>
-      <p><%= @flat.address %></p>
+    <div class="">
+      <%= link_to :back , class: "text-white" do%>
+        <i class="fa-solid fa-arrow-left"></i> Back
+      <% end %>
+    </div>
+      <div>
+        <h1>Flat in
+          <%= @flat.city %>, <%= @flat.flat_location %></h1>
+        <p><%= @flat.address %></p>
+      </div>
     </div>
   </div>
 
   <div class="info-container px-5 py-3 mb-3 mx-5">
     <%# style="display: flex; flex-wrap: wrap;"> %>
     <div class="row justify-content-center px-3">
-      <div class="booking-info col-7">
+      <div class=" col-7">
 
         <div class="apartment-info">
-
-          <h2>€<%= @flat.price %>
-            / night</h2>
           <br>
-          <h4>
-            <i class="fa-solid fa-house"></i>
-            50m<sup>2</sup>
-            |
-            <i class="fa-solid fa-user"></i>
-            3-4 |
-            <i class="fa-solid fa-bed"></i>
-            2 |
-            <i class="fa-solid fa-restroom"></i>
-            1.5 |
-            <i class="fa-sharp fa-solid fa-door-closed"></i>
-            Self check-in
-          </h4>
+          <h2 class="gray">
+            <i class="fa-solid fa-house text-d"></i>  50m<sup>2</sup> &nbsp | &nbsp
+            <i class="fa-solid fa-user"></i>  3-4 &nbsp | &nbsp
+            <i class="fa-solid fa-bed"></i>  2 &nbsp | &nbsp
+            <i class="fa-solid fa-restroom"></i>  1.5 &nbsp | &nbsp
+            <i class="fa-sharp fa-solid fa-door-closed"></i>  Self check-in
+          </h2>
           <br>
-          <h4>Rental unit hosted by
-            <%= @flat.user.first_name %></h4>
           <br>
+          <h3>€<%= @flat.price %> / night</h3>
+          <p><%= @flat.description %></p>
+          <br>
+          <br>
+          <br>
+          <h4>Rental unit hosted by <%= @flat.user.first_name %></h4>
         </div>
-        <p><%= @flat.description %></p>
 
         <div
           class="my-5 border p-5"
@@ -74,12 +71,6 @@
       <div class="col-4 ms-5">
         <div class="booking-form">
           <%= render "shared/newbooking", flat: @flat, booking: Booking.new %>
-          <div class="ms-2 my-4">
-            <%= link_to :back , class: "text-dark" do %>
-              <i class="fa-solid fa-arrow-left"></i>
-              Back
-            <% end %>
-          </div>
         </div>
       </div>
 
