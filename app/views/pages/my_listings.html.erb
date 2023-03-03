@@ -32,8 +32,8 @@
             <h5 class="card-title"><%= flat.address %>, <%= flat.city %>, <%= flat.flat_location %></h5>
             <p class="card-text">Flat Owner: <%= flat.user.first_name %></p>
             <p class="card-text"><%= number_to_currency(flat.price, unit: "€", precision: 0) %> / night</p>
-            <a href="<%= flat_path(flat) %>" class="btn btn-secondary">View details</a>
-            <a href="<%= edit_flat_path(flat) %>" class="btn btn-secondary">Edit flat details</a>
+            <a href="<%= flat_path(flat) %>" class="btn btn-flat">View details</a>
+            <a href="<%= edit_flat_path(flat) %>" class="btn btn-secondary">Edit flat</a>
 
             <% if flat.bookings == [] %>
               <a href="<%= flat_path(flat) %>" class="btn btn-primary my-2 text-white" data-turbo-method="delete" data-turbo-confirm="Are you sure?">Remove flat</a>
