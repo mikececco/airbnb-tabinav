@@ -61,7 +61,7 @@ class FlatsController < ApplicationController
     authorize(@flat)
     @flat.destroy
     # No need for app/views/restaurants/destroy.html.erb
-    redirect_to flats_path, status: :see_other
+    redirect_to my_listings_path, status: :see_other
   end
 
   private

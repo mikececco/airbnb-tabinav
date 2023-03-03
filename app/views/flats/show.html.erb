@@ -54,8 +54,15 @@
 
       </div>
 
-      <div class="booking-form col-4 ms-5">
-        <%= render "shared/newbooking", flat: @flat, booking: Booking.new %>
+      <div class="col-4 ms-5">
+        <div class="booking-form">
+          <%= render "shared/newbooking", flat: @flat, booking: Booking.new %>
+          <div class="ms-2 my-4">
+            <%= link_to :back , class: "text-dark" do%>
+              <i class="fa-solid fa-arrow-left"></i> Back
+            <% end %>
+          </div>
+        </div>
       </div>
 
     </div>
