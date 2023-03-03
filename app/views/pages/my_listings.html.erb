@@ -9,14 +9,20 @@
     </div>
   </div>
 <% else %>
-  <div class="mt-5 p-4 text-black">
-    <h1 class="text-black text-center">My Listings</h1>
+  <div class="mt-5 mx-5 px-4 text-black row justify-content-center">
+    <h1 class="col-3 text-black">My Listings</h1>
+    <br>
+      <div class="col-5 text-end">
+        <h1><%= link_to new_flat_path, class: "btn btn-primary btn-flat rounded-5 text-white" do %>
+        <i class="fa-solid fa-plus"></i>  List a new flat!
+      <% end %></h1>
+    </div>
   </div>
 
   <div class="m-4">
      <% @flats.each do |flat| %>
       <div class="row m-5 justify-content-center">
-        <div class="card col-4 h-100 m-3">
+        <div class="card col-3 h-100 m-3">
           <% if flat.photo.key %>
             <img src="<%= cl_image_path(flat.photo.key)%>" class="card-img-top" alt="<%= flat.city %>">
           <% else %>
@@ -30,12 +36,18 @@
           </div>
         </div>
 
-        <div class="col-6 booking-tag">
-          <% flat.bookings.each do |booking| %>
-            <div class="border border-1 p-3 bg-light text-dark rounded-3 m-3">
-              <h2><%= booking.user.first_name %> : From <strong><%= booking.start_date %></strong> to <strong><%= booking.end_date %></strong></h2>
-              <%= link_to "Reject Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", class: "btn btn-secondary"} %>
+        <div class="col-5 booking-tag">
+          <% if flat.bookings == [] %>
+            <div class="p-3 text-dark m-3">
+              <h2>No bookings for this flat at the moment.</h2>
             </div>
+          <% else %>
+            <% flat.bookings.each do |booking| %>
+              <div class="border border-1 p-3 bg-light text-dark rounded-3 m-3">
+                <h2><%= booking.user.first_name %> : From <strong><%= booking.start_date %></strong> to <strong><%= booking.end_date %></strong></h2>
+                <%= link_to "Reject Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", class: "btn btn-secondary"} %>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
