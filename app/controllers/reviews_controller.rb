@@ -16,11 +16,9 @@ class ReviewsController < ApplicationController
     @review.booking = @booking
     authorize(@review)
     if @review.save
-      flash[:success] = "Review created successfully!"
-      redirect_to flat_path(@booking.flat)
+      redirect_to flat_path(@booking.flat), notice: "Review created successfully!"
     else
-      flash[:error] = "Failed to create review"
-      render 'bookings/show', status: :unprocessable_entity, flat: @flat
+      render 'bookings/show', status: :unprocessable_entity, flat: @flat, alert: "Failed to create review"
     end
   end
 
