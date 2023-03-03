@@ -32,10 +32,10 @@ nl_addresses = {
 
 nl_addresses.each do |city, array|
   array.each do |street|
-    puts street
-    puts "image start upload"
-    file = URI.open("https://source.unsplash.com/random/600x400/?#{city}")
-    puts "image uploaded"
+    puts "--#{street}"
+    puts "--image start upload"
+    file = URI.open("https://source.unsplash.com/random/1200x800/?#{city}")
+    puts "--image uploaded"
     price = rand(39..99)
     description = "Bumble Barn has a large sitting, dining and kitchen area, opening onto the patio with views of the horse paddocks, open field and trees.
     Sitting Room has a smart 4K TV.
@@ -46,52 +46,58 @@ nl_addresses.each do |city, array|
     flat = Flat.new(address: street, city: city, flat_location: "NL", price: price, user: [admin, eirene, ronnie, jeroen].sample , description: description)
     flat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
     flat.save!
-
-    # start_date = Date.today
-    # duration = rand(3..7)
-    # end_date = start_date + duration
-    # booking = Booking.new(start_date: start_date, end_date: end_date, user: eirene)
-    # booking.flat = flat
-    # booking.save!
   end
 end
 
 puts "20 flats in NL created!"
+puts "---\n"
 puts "Creating Mike's flats..."
 
 mike_flats = ["Roggekamp 90", "Dwingelostraat", "Heliotrooplaan 38", "Haviklaan 20", "Walenburg 6"]
 mike_flats.each do |street|
-    puts street
-    puts "image start upload"
-    file = URI.open("https://source.unsplash.com/random/600x400/?the-hague")
-    puts "image uploaded"
-    price = rand(39..99)
-    description = "Bumble Barn has a large sitting, dining and kitchen area, opening onto the patio with views of the horse paddocks, open field and trees.
-    Sitting Room has a smart 4K TV.
-    Fully equipped kitchen with large fridge/freezer.
-    Main bedroom with king sized double bed and en suite shower room. Optional colour changing LED lighting.
-    2 twin bedrooms. Main bathroom with bath/shower\n\n
-    It combines perfectly the authenticity of its architecture with the modernity of its decoration and amenities. It offers 600 square meters of internal spaces to be able to live for a few days with your family, your friends or your colleagues there."
-    flat = Flat.new(address: street, city: "The Hague", flat_location: "NL", price: price, user: mike , description: description)
-    flat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-    flat.save!
+  puts "--#{street}"
+  puts "--image start upload"
+  file = URI.open("https://source.unsplash.com/random/1200x800/?the-hague")
+  puts "--image uploaded"
+  price = rand(39..99)
+  description = "Bumble Barn has a large sitting, dining and kitchen area, opening onto the patio with views of the horse paddocks, open field and trees.
+  Sitting Room has a smart 4K TV.
+  Fully equipped kitchen with large fridge/freezer.
+  Main bedroom with king sized double bed and en suite shower room. Optional colour changing LED lighting.
+  2 twin bedrooms. Main bathroom with bath/shower\n\n
+  It combines perfectly the authenticity of its architecture with the modernity of its decoration and amenities. It offers 600 square meters of internal spaces to be able to live for a few days with your family, your friends or your colleagues there."
+  flat = Flat.new(address: street, city: "The Hague", flat_location: "NL", price: price, user: mike, description: description)
+  flat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+  flat.save!
 end
 
 puts "Mike's flats created!"
+puts "---\n"
+puts "Booking Mike's flats"
 
-# puts "---\n"
-# puts "Creating 10 flats around the world..."
+5.times do
+  start_date = Date.today + (rand(4..20) * 10)
+  duration = rand(3..10)
+  end_date = start_date + duration
+  booking = Booking.new(start_date: start_date, end_date: end_date, user: [eirene, ronnie, jeroen].sample)
+  booking.flat = mike.flats.sample
+  booking.save!
+end
 
-# 10.times do
-#   address = Faker::Address
-#   street = address.full_address
-#   city = address.city
-#   country = address.country
-#   # file = URI.open("https://source.unsplash.com/random/600x400/?#{city}")
-#   price = rand(39..109)
-#   flat = Flat.new(address: street, city: city, flat_location: country, price: price, user: admin)
-#   # flat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
-#   flat.save!
-# end
+puts "5 bookings on Mike's flats"
+puts "---\n"
+puts "Mike booking flats..."
 
-# puts "10 flats created!"
+def book_flats(city, user, start_date)
+  flat = Flat.where(city: city).sample
+  flat_owner = flat.user
+  duration = rand(3..10)
+  end_date = start_date + duration
+  booking = Booking.new(start_date: start_date, end_date: end_date, user: user, flat: flat)
+  booking.save!
+end
+
+book_flats("Rotterdam", mike, Date.today + 40)
+book_flats("Utrecht", mike, Date.today + 100)
+
+puts "Mike booked 2 flats"
