@@ -25,6 +25,13 @@ class FlatsController < ApplicationController
   def show
     authorize(@flat)
     @booking = @flat.bookings.find_by(user_id: current_user.id) if nil?
+    @markers = Flat.where(id: [@flat.id]).geocoded.map do |flat|
+      {
+        lat: flat.latitude,
+        lng: flat.longitude,
+        info_window_html: render_to_string(partial: "info_window", locals: {flat: flat})
+      }
+    end
   end
 
   # new: will display a form to create a new flat
