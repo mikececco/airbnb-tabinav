@@ -1,50 +1,70 @@
 <div class="page-container">
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')">
+  <div
+    class="banner"
+    style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@flat.photo.key) %>')"
+  >
     <div class="banner-container">
       <h1>Flat in
-        <%= @flat.city %>, <%= @flat.flat_location %></h1>
+        <%= @flat.city %>,
+        <%= @flat.flat_location %></h1>
       <p><%= @flat.address %></p>
     </div>
   </div>
 
   <div class="info-container px-5 py-3 mb-3 mx-5">
-   <%# style="display: flex; flex-wrap: wrap;"> %>
+    <%# style="display: flex; flex-wrap: wrap;"> %>
     <div class="row justify-content-center px-3">
       <div class="booking-info col-7">
 
         <div class="apartment-info">
 
-            <h2>€<%= @flat.price %> / night</h2>
-            <br>
-            <h4>
-              <i class="fa-solid fa-house"></i>  50m<sup>2</sup> |
-              <i class="fa-solid fa-user"></i>  3-4 |
-              <i class="fa-solid fa-bed"></i>  2 |
-              <i class="fa-solid fa-restroom"></i>  1.5 |
-              <i class="fa-sharp fa-solid fa-door-closed"></i>  Self check-in
-            </h4>
-            <br>
-            <h4>Rental unit hosted by <%= @flat.user.first_name %></h4>
+          <h2>€<%= @flat.price %>
+            / night</h2>
+          <br>
+          <h4>
+            <i class="fa-solid fa-house"></i>
+            50m<sup>2</sup>
+            |
+            <i class="fa-solid fa-user"></i>
+            3-4 |
+            <i class="fa-solid fa-bed"></i>
+            2 |
+            <i class="fa-solid fa-restroom"></i>
+            1.5 |
+            <i class="fa-sharp fa-solid fa-door-closed"></i>
+            Self check-in
+          </h4>
+          <br>
+          <h4>Rental unit hosted by
+            <%= @flat.user.first_name %></h4>
           <br>
         </div>
-          <p><%= @flat.description %></p>
+        <p><%= @flat.description %></p>
 
-        <div class="my-5 border p-5">
-          MORE PICTURESSS
+        <div
+          class="my-5 border p-5"
+          style="width: 400px; height: 60vh;"
+          data-controller="map"
+          data-map-markers-value="<%= @markers.to_json %>"
+          data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"
+        >
         </div>
 
-        <% if @flat.reviews.present?%>
-        <h4>Reviews</h4>
+        <% if @flat.reviews.present? %>
+          <h4>Reviews</h4>
         <% end %>
-
 
         <div class="reviews">
           <% @flat.reviews.each do |review| %>
             <div class="review">
-              <p> Rating: <%= review.rating %>
+              <p>
+                Rating:
+                <%= review.rating %>
                 &#9733;</p>
-              <p>Title: <%= review.title %></p>
-              <p>Description: <%= review.description %></p>
+              <p>Title:
+                <%= review.title %></p>
+              <p>Description:
+                <%= review.description %></p>
             </div>
           <% end %>
         </div>
@@ -55,8 +75,9 @@
         <div class="booking-form">
           <%= render "shared/newbooking", flat: @flat, booking: Booking.new %>
           <div class="ms-2 my-4">
-            <%= link_to :back , class: "text-dark" do%>
-              <i class="fa-solid fa-arrow-left"></i> Back
+            <%= link_to :back , class: "text-dark" do %>
+              <i class="fa-solid fa-arrow-left"></i>
+              Back
             <% end %>
           </div>
         </div>
