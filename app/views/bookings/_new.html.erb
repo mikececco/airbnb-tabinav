@@ -4,3 +4,5 @@
   <%= f.input :end_date, input_html: { class: 'form-control form-control-sm' } %>
   <%= f.submit class:"btn btn-primary btn-sm rounded-5" %>
 <% end %>
+
+<%= button_to 'Book now', listing_bookings_path(@listing), method: :post, onclick: 'displayLogo()' %>
