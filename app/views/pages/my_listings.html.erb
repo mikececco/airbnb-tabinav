@@ -1,0 +1,59 @@
+<% if @flats == [] %>
+  <div class="mt-5 p-4 text-black">
+    <h1 class="text-black text-center">No listing yet...</h1>
+    <br>
+    <div class="text-center mb-5">
+      <h1><%= link_to new_flat_path, class: "btn btn-primary btn-flat rounded-5" do %>
+        <i class="fa-solid fa-plus"></i>  List a flat!
+      <% end %></h1>
+    </div>
+  </div>
+<% else %>
+  <div class="mt-5 mx-5 px-4 text-black row justify-content-center">
+    <h1 class="col-3 text-black">My Listings</h1>
+    <br>
+      <div class="col-5 text-end">
+        <h1><%= link_to new_flat_path, class: "btn btn-primary btn-flat rounded-5 text-white" do %>
+        <i class="fa-solid fa-plus"></i>  List a new flat!
+      <% end %></h1>
+    </div>
+  </div>
+
+  <div class="m-4">
+     <% @flats.each do |flat| %>
+      <div class="row m-5 justify-content-center">
+        <div class="card col-3 h-100 m-3">
+          <% if flat.photo.key %>
+            <img src="<%= cl_image_path(flat.photo.key)%>" class="card-img-top" alt="<%= flat.city %>">
+          <% else %>
+            <img src="https://via.placeholder.com/300x200.png?text=No+Image" class="card-img-top" alt="<%= flat.city %>">
+          <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><%= flat.address %>, <%= flat.city %>, <%= flat.flat_location %></h5>
+            <p class="card-text">Host: <%= flat.user.first_name %></p>
+            <p class="card-text"><%= number_to_currency(flat.price, unit: "€", precision: 0) %> / night</p>
+            <a href="<%= flat_path(flat) %>" class="btn btn-secondary">View details</a>
+            <% if flat.bookings == [] %>
+    <a href="<%= flat_path(flat) %>" class="btn btn-secondary">Remove Flat</a>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-5 booking-tag">
+          <% if flat.bookings == [] %>
+            <div class="p-3 text-dark m-3">
+              <h2>No bookings for this flat at the moment.</h2>
+            </div>
+          <% else %>
+            <% flat.bookings.each do |booking| %>
+              <div class="border border-1 p-3 bg-light text-dark rounded-3 m-3">
+                <h2><%= booking.user.first_name %> : From <strong><%= booking.start_date %></strong> to <strong><%= booking.end_date %></strong></h2>
+                <%= link_to "Reject Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", class: "btn btn-secondary"} %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

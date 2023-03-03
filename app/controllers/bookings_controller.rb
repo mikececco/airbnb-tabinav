@@ -1,12 +1,8 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: %i[show edit update]
+  before_action :set_booking, only: %i[show edit destroy update]
 
   def index
-    if current_user.role == "renter"
-      @bookings = Booking.where("user = current_user")
-    else
-      @bookings = Booking.joins(:flat).where(params[:user_id] == current_user.id)
-    end
+    @bookings = current_user.bookings
   end
 
   # show: will display the details of a specific booking, such as the price and location
@@ -32,7 +28,6 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     authorize @booking
 
-
     if @booking.save
       redirect_to booking_path(@booking), notice: "Booking confirmed"
     else
@@ -57,7 +52,7 @@ class BookingsController < ApplicationController
     authorize @booking
     @booking.destroy
     # No need for app/views/restaurants/destroy.html.erb
-    # redirect_to bookings_path, status: :see_other
+    redirect_to bookings_path, status: :see_other
   end
 
   private

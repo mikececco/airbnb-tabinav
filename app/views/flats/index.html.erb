@@ -1,5 +1,5 @@
 <% if @flats.empty? %>
-
+  <div class="m-5 p-4 text-black">
     <h1 class="text-black">No flats in "<%= @query.upcase %>"</h1>
     <h1 class="text-black">
       <%= link_to root_path, class: "btn btn-primary btn-flat rounded-5" do %>
@@ -22,7 +22,6 @@
 
   <div class="">
     <%= render "shared/flatspage", flats: @flats  %>
-    <%= link_to "Add Listing", new_flat_path, class: "btn btn-primary" %>
   </div>
 </div>
   <%= render "shared/createflat" %>

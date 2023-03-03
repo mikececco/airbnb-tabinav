@@ -1,5 +1,5 @@
-<div id="animation" class="m-5 p-4 text-center bg-dark rounded-4">
-  <h1>Booking confirmed!</h1>
+<div class="m-5 p-4 text-center bg-dark rounded-4">
+  <h1>Booking successful!</h1>
 
   <%= image_tag(
     "le-wagon-logo-svg",
@@ -21,21 +21,7 @@
 </div>
 
 <div class="text-center mb-5">
-  <h1><%= link_to root_path, class: "btn btn-primary btn-flat rounded-5" do %>
-      <i class="fas fa-search text-white"></i>
-      Search again
-    <% end %></h1>
+  <h1><%= link_to bookings_path, class: "btn btn-primary btn-flat rounded-5" do %>
+    <i class="fa-solid fa-calendar-days"></i>  View My Bookings
+  <% end %></h1>
 </div>
-
-<% if policy(@booking).edit? %>
-  <%= link_to "Edit", edit_booking_path(@booking) %>
-<% end %>
-
-<% if policy(@booking).destroy? %>
-  <%= link_to "Delete",
-  booking_path(@booking),
-  data: {
-    turbo_method: :delete,
-    turbo_confirm: "Are you sure?"
-  } %>
-<% end %>

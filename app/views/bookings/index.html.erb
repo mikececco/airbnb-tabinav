@@ -1,4 +1,45 @@
-<% @bookings.each do |booking| %>
-<br>
-<%= booking.flat.address %>
+<% if @bookings == [] %>
+  <div class="mt-5 p-4 text-black">
+    <h1 class="text-black text-center">No bookings yet...</h1>
+    <br>
+    <div class="text-center mb-5">
+      <h1><%= link_to flats_path, class: "btn btn-primary btn-flat rounded-5" do %>
+        <i class="fa-solid fa-plus"></i>  Book a flat!
+      <% end %></h1>
+    </div>
+  </div>
+<% else %>
+
+  <div class="mt-5 p-4 text-black">
+    <h1 class="text-black text-center">My Bookings</h1>
+  </div>
+
+
+  <div class="d-flex justify-content-center m-4">
+    <div class="flats-container">
+      <% @bookings.each do |booking| %>
+        <div class="col">
+          <div class="card h-100">
+            <% if booking.flat.photo.key %>
+              <img src="<%= cl_image_path(booking.flat.photo.key)%>" class="card-img-top" alt="<%= booking.flat.city %>">
+            <% else %>
+              <img src="https://via.placeholder.com/300x200.png?text=No+Image" class="card-img-top" alt="<%= booking.flat.city %>">
+            <% end %>
+            <div class="card-body">
+              <h4>From <strong><%= booking.start_date %></strong> </h4>
+              <h4>To <strong><%= booking.end_date %></strong></h4>
+              <h5 class="card-title"><%= booking.flat.address %></h5>
+              <h5 class="card-title"><%= booking.flat.city %></h5>
+              <p class="card-text">Hosted by: <%= booking.flat.user.first_name %></p>
+              <p class="card-text"><%= number_to_currency(booking.flat.price, unit: "€", precision: 0) %> / night</p>
+              <a href="<%= flat_path(booking.flat) %>" class="btn btn-secondary">View flat details</a>
+              <a href="<%= edit_booking_path(booking) %>" class="btn btn-secondary">Edit Dates</a>
+              <%= link_to "Cancel Booking", booking_path(booking), data: {turbo_method: :delete, turbo_confirm: "Are you sure?", class: "btn btn-secondary"} %>
+              <%= link_to "Add a review", new_booking_review_path(booking), class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 <% end %>

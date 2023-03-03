@@ -6,8 +6,12 @@ class BookingPolicy < ApplicationPolicy
     # end
   end
 
+  def index?
+    true
+  end
+
   def show?
-    record.user == user
+    true
   end
 
   def create?
@@ -27,6 +31,7 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def destroy?
-    record.user == user
+    true
+    # record.user == user || record.flat.user
   end
 end

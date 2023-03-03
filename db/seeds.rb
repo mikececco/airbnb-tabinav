@@ -41,7 +41,8 @@ nl_addresses.each do |city, array|
     Sitting Room has a smart 4K TV.
     Fully equipped kitchen with large fridge/freezer.
     Main bedroom with king sized double bed and en suite shower room. Optional colour changing LED lighting.
-    2 twin bedrooms. Main bathroom with bath/shower"
+    2 twin bedrooms. Main bathroom with bath/shower\n\n
+    It combines perfectly the authenticity of its architecture with the modernity of its decoration and amenities. It offers 600 square meters of internal spaces to be able to live for a few days with your family, your friends or your colleagues there."
     flat = Flat.new(address: street, city: city, flat_location: "NL", price: price, user: admin, description: description)
     flat.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
     flat.save!
